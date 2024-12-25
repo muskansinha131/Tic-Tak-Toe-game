@@ -23,11 +23,12 @@ const resetGame = () =>{
     msgContainer.classList.add("hide");
 };
 
-
+let count = 0;
 
 boxes.forEach((box) => {
     box.addEventListener("click",()=>{
         console.log("box was Clicked");
+        count++;
         if(turn){
         box.innerText = "X";
         turn = false ;
@@ -37,8 +38,11 @@ boxes.forEach((box) => {
             box.innerText = "O";
             turn = true ;
         }
-
         box.disabled = true;
+        if(count === 9)
+        {
+            box.innerText ="Draw";
+        }
         box.style.backgroundColor = "pink";
         checkWinner(); //This is function here i am doing function call
     }
